@@ -15,6 +15,7 @@ public with sharing class TaskManager_Test {
         System.assertEquals(1, result.size());
         System.assertEquals(lead.Id, result[0].WhoId);
     }
+
     @IsTest static void getTasksByWhoId_LeadWithoutTasks(){
         Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead');
         insert lead;
@@ -26,6 +27,7 @@ public with sharing class TaskManager_Test {
         System.assert(result != null);
         System.assertEquals(0, result.size());
     }
+
     @IsTest static void getTasksByWhoId_EmptyLeadId(){
         Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead');
 
@@ -36,6 +38,7 @@ public with sharing class TaskManager_Test {
         System.assert(result != null);
         System.assertEquals(0, result.size());
     }
+
     @IsTest static void getTasksByWhoId_NullId(){
         Test.startTest();
         List<Task> result = TaskManager.getTasksByWhoId(null);

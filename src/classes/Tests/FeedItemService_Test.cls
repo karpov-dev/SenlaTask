@@ -16,6 +16,7 @@ public class FeedItemService_Test  {
 		System.assertEquals(1, clonedItems.size());
 		System.assertEquals(targetAccount.Id, clonedItems[0].ParentId);
 	}
+
 	@IsTest static void cloneTextPost_cloneAccountToContact(){
 		Account sourceAccount = AccountDataFactory.getAccountByName('Source Account');
 		Contact targetContact = ContactDataFactory.getContact();
@@ -30,6 +31,7 @@ public class FeedItemService_Test  {
 
 		System.assertEquals(1, clonedItems.size());
 	}
+
 	@isTest static void cloneTextPost_AccountWithoutFeedItems(){
 		Account sourceAccount = AccountDataFactory.getAccountByName('Source Account');
 		Account targetAccount = AccountDataFactory.getAccountByName('Target Account');
@@ -42,6 +44,7 @@ public class FeedItemService_Test  {
 
 		System.assertEquals(0, clonedItems.size());
 	}
+
 	@isTest static void cloneTextPost_NullData(){
 		Test.startTest();
 		List<FeedItem> clonedItems = FeedItemService.cloneTextPost(null, null);
@@ -49,6 +52,7 @@ public class FeedItemService_Test  {
 
 		System.assertEquals(0, clonedItems.size());
 	}
+
 	@IsTest static void cloneTextPost_EmptyData(){
 		//accounts before insert (without id)
 		Account sourceAccount = AccountDataFactory.getAccountByName('Source Account');
@@ -75,6 +79,7 @@ public class FeedItemService_Test  {
 
 		System.assertEquals(null, clonedItems.Id);
 	}
+
 	@IsTest static void  cloneTrackedChangeToTextPost_SourceChanged(){
 		Account sourceAccount = AccountDataFactory.getAccountByName('Source Account');
 		Account targetAccount = AccountDataFactory.getAccountByName('Target Account');
@@ -87,6 +92,7 @@ public class FeedItemService_Test  {
 
 		System.assertEquals(null, clonedItems.Id);
 	}
+
 	@IsTest static void  cloneTrackedChangeToTextPost_EmptyData(){
 		Account sourceAccount = AccountDataFactory.getAccountByName('Source Account');
 		Account targetAccount = AccountDataFactory.getAccountByName('Target Account');

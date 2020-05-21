@@ -1,7 +1,3 @@
-/**
- * Created by passa on 15.05.2020.
- */
-
 @IsTest
 private class FeedItemServiceUtils_Test {
 
@@ -19,6 +15,7 @@ private class FeedItemServiceUtils_Test {
 
         System.assertEquals(targetAccount.Id, textPostItem.ParentId);
     }
+
     @IsTest static void TrackedChangeToTextPost_NullData() {
         Test.startTest();
         FeedItem textPostItem = FeedItemServiceUtils.TrackedChangeToTextPost(null, null);
