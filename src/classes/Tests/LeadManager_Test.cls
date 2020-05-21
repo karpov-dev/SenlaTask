@@ -1,6 +1,3 @@
-/**
- * Created by passa on 20.05.2020.
- */
 @IsTest
 public with sharing class LeadManager_Test {
 
@@ -15,6 +12,7 @@ public with sharing class LeadManager_Test {
         System.assertNotEquals(null, result);
         System.assertEquals(lead.Id, result.Id);
     }
+
     @IsTest static void getLeadById_NullData(){
         Test.startTest();
         Lead result = LeadManager.getLeadById(null);
@@ -23,6 +21,7 @@ public with sharing class LeadManager_Test {
         System.assertNotEquals(null, result);
         System.assertEquals(result.Id, null);
     }
+
     @IsTest static void getLeadById_EmptyIdData(){
         Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead');
 

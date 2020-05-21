@@ -1,7 +1,3 @@
-/**
- * Created by passa on 15.05.2020.
- */
-
 @IsTest
 private class AccountService_Test {
 
