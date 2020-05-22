@@ -1,7 +1,7 @@
 @IsTest
 public class TimeConverterController_Test {
 
-    @IsTest static void GMT_positive() {
+    @IsTest static void GMT_Positive() {
         Integer gmtForTest = 5;
         TimeConverterController timeConverter = new TimeConverterController();
         timeConverter.GMT = gmtForTest;
@@ -20,7 +20,7 @@ public class TimeConverterController_Test {
         System.assertEquals(expectedTime, timeInGMT);
     }
 
-    @IsTest static void GMT_negative(){
+    @IsTest static void GMT_Negative() {
         Integer gmtForTest = -9;
         TimeConverterController timeConverter = new TimeConverterController();
         timeConverter.GMT = gmtForTest;
@@ -39,7 +39,7 @@ public class TimeConverterController_Test {
         System.assertEquals(expectedTime, timeInGMT);
     }
 
-    @IsTest static void GMT_lessThan24(){
+    @IsTest static void GMT_LessThan24() {
         Integer gmtForTest = -32;
         TimeConverterController timeConverter = new TimeConverterController();
         timeConverter.GMT = gmtForTest;
@@ -58,7 +58,7 @@ public class TimeConverterController_Test {
         System.assertEquals(expectedTime, timeInGMT);
     }
 
-    @IsTest static void GMT_moreThan24(){
+    @IsTest static void GMT_MoreThan24() {
         Integer gmtForTest = 35;
         TimeConverterController timeConverter = new TimeConverterController();
         timeConverter.GMT = gmtForTest;
@@ -77,7 +77,7 @@ public class TimeConverterController_Test {
         System.assertEquals(expectedTime, timeInGMT);
     }
 
-    @IsTest static void GMT_zero(){
+    @IsTest static void GMT_Zero() {
         TimeConverterController timeConverter = new TimeConverterController();
         timeConverter.GMT = 0;
         Test.startTest();
@@ -89,7 +89,7 @@ public class TimeConverterController_Test {
         System.assertEquals(Datetime.now(), timeInGMT);
     }
 
-    @IsTest static void GMT_notSet(){
+    @IsTest static void GMT_NotSet() {
         TimeConverterController timeConverter = new TimeConverterController();
         Test.startTest();
         Datetime timeInGMT = timeConverter.GMTTime;
@@ -100,7 +100,7 @@ public class TimeConverterController_Test {
         System.assertEquals(Datetime.now(), timeInGMT);
     }
 
-    @IsTest static void GMT_null(){
+    @IsTest static void GMT_Null() {
         TimeConverterController timeConverter = new TimeConverterController();
         timeConverter.GMT = null;
         Test.startTest();
