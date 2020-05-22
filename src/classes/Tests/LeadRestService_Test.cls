@@ -1,14 +1,18 @@
 @IsTest
 public class LeadRestService_Test {
 
-    @IsTest static void getLeadById_FoundData(){
-        Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead');
+    @TestSetup static void setup(){
+        Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead', '1@mail.com');
         insert lead;
+    }
+
+    @IsTest static void getLeadById_FoundData() {
+        Lead lead = [SELECT Id, FirstName, LastName FROM Lead];
 
         Map<String, String> params = new Map<String, String>();
         params.put('id', lead.Id);
         RestRequest request = RequestDataFactory.getRestRequest('Leads', 'GET', params);
-        RestContext.request =  request;
+        RestContext.request = request;
 
         Test.startTest();
         Lead result = LeadRestService.getLeadById();
@@ -18,13 +22,13 @@ public class LeadRestService_Test {
         System.assertEquals(lead.id, result.Id);
     }
 
-    @IsTest static void getLeadById_NotFoundData(){
-        Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead');
+    @IsTest static void getLeadById_NotFoundData() {
+        Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead', '1@mail.com');
 
         Map<String, String> params = new Map<String, String>();
         params.put('id', lead.Id);
         RestRequest request = RequestDataFactory.getRestRequest('Leads', 'GET', params);
-        RestContext.request =  request;
+        RestContext.request = request;
 
         Test.startTest();
         Lead result = LeadRestService.getLeadById();
@@ -34,9 +38,8 @@ public class LeadRestService_Test {
         System.assertEquals(null, result.Id);
     }
 
-    @IsTest static void createLeadTaskById_NormalData(){
-        Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead');
-        insert lead;
+    @IsTest static void createLeadTaskById_ValidData() {
+        Lead lead = [SELECT Id, FirstName, LastName FROM Lead];
 
         Test.startTest();
         Task result = LeadRestService.createLeadTaskById(lead.Id);
@@ -49,8 +52,8 @@ public class LeadRestService_Test {
         System.assertEquals(1, tasksInDatabase.size());
     }
 
-    @IsTest static void createLeadTaskById_EmptyLeadId(){
-        Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead');
+    @IsTest static void createLeadTaskById_EmptyLeadId() {
+        Lead lead = LeadDataFactory.getLeadByName('Test', 'Lead', '1@mail.com');
 
         Test.startTest();
         Task result = LeadRestService.createLeadTaskById(lead.Id);
@@ -63,7 +66,7 @@ public class LeadRestService_Test {
         System.assertEquals(0, tasksInDatabase.size());
     }
 
-    @IsTest static void createLeadTaskById_NullLeadIdParam(){
+    @IsTest static void createLeadTaskById_NullLeadIdParam() {
         Test.startTest();
         Task result = LeadRestService.createLeadTaskById(null);
         Test.stopTest();

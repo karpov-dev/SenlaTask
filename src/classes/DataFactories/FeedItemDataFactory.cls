@@ -1,7 +1,7 @@
 @IsTest
 public class FeedItemDataFactory {
 
-    public static FeedItem getTextPostFeedItem(Id parentId){
+    public static FeedItem getTextPostFeedItem(Id parentId) {
         FeedItem item = new FeedItem();
         item.Type = 'TextPost';
         item.Title = 'Text Post';
@@ -9,5 +9,4 @@ public class FeedItemDataFactory {
         item.ParentId = parentId;
         return item;
     }
-    
 }
